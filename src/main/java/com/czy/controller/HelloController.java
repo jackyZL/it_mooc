@@ -13,8 +13,11 @@ public class HelloController {
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public String hello() {
-
         return "{'hello':'hello'}";
+    }
 
+    @RequestMapping(value = "/hello2", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public String helloasdfasd() {
+        return "{'hello':'hello2'}";
     }
 }

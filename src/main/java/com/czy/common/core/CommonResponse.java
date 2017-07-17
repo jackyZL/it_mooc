@@ -21,37 +21,37 @@ public class CommonResponse {
     private String msg;
 
     public Object getData() {
-	return data;
+        return data;
     }
 
     public void setData(Object data) {
-	this.data = data;
+        this.data = data;
     }
 
     public int getCode() {
-	return code;
+        return code;
     }
 
     public void setCode(int code) {
-	this.code = code;
+        this.code = code;
     }
 
     public String getMsg() {
-	return msg;
+        return msg;
     }
 
     public void setMsg(String msg) {
-	this.msg = msg;
+        this.msg = msg;
     }
 
     public CommonResponse() {
     }
 
     public CommonResponse(int code, Object data, String msg) {
-	super();
-	this.code = code;
-	this.data = data;
-	this.msg = msg;
+        super();
+        this.code = code;
+        this.data = data;
+        this.msg = msg;
     }
 
 }
