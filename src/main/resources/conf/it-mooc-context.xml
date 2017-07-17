@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    <!-- 打开Spring的Annotation支持 -->
+    <context:annotation-config/>
+
+    <!-- 引入配置文件 -->
+    <bean id="conf"
+          class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="singleton" value="true"/>
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="locations">
+            <list>
+                <!-- 本地开发环境配置 -->
+                <value>classpath:conf/*.properties</value>
+                <!-- 测试线上环境配置(覆盖本地) -->
+                <value>file:${catalina.base}/conf/application.server.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="propertyPlaceholderConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="properties" ref="conf"/>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="ignoreResourceNotFound" value="true"/>
+    </bean>
+
+    <!-- 引入其他配置文件 -->
+    <!--<import resource="classpath*:conf/it-mooc-*.xml"></import>-->
+
+    <!-- mybatis 配置 -->
+    <import resource="classpath:conf/database/spring-mybatis.xml"/>
+
+</beans>
